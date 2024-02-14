@@ -79,6 +79,7 @@ def load_data(control, size)->tuple[int, int, int, int]:
             multilocation_path=size + MULTILOCATION_FILE ,
         )    
     )
+    
     return jobs_size, skills_size, employment_types_size, multilocation_size
 
 
