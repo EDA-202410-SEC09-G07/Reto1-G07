@@ -87,7 +87,11 @@ def print_data(control, id):
         Función que imprime un dato dado su ID
     """
     #TODO: Realizar la función para imprimir un elemento
-    pass
+    data = controller.get_data_by_id(control, id)
+    if data is not None:
+        print(data)
+    else:
+        print("No se encontró ningún dato con el ID proporcionado.")
 
 def print_req_1(control):
     """
