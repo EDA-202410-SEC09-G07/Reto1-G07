@@ -36,8 +36,12 @@ def new_controller():
     Crea una instancia del modelo
     """
     #TODO: Llamar la función del modelo que crea las estructuras de datos
+    control = {
+        'model': None
+    }
+    control['model'] = model.new_data_structs()
+    return control
     pass
-
 
 # Funciones para la carga de datos
 
@@ -46,6 +50,17 @@ def load_data(control, filename):
     Carga los datos del reto
     """
     # TODO: Realizar la carga de datos
+    catalog = control['model']
+    
+    jobs = load_jobs(jobs_filename, 'jobs')
+    skills = load_skills(skills_filename, 'skills')
+    employment_types = load_employment_types(employment_types_filename, 'employments_type')
+    multilocation = load_multilocation(multilocation_filename, 'multilocations')
+    
+    model.add_data(catalog, jobs, 'jobs')
+    model.add_data(catalog, skills, 'skills')
+    model.add_data(catalog, employment_types, 'employments_type')
+    model.add_data(catalog, multilocation, 'multilocations')
     pass
 
 
@@ -56,6 +71,8 @@ def sort(control):
     Ordena los datos del modelo
     """
     #TODO: Llamar la función del modelo para ordenar los datos
+    catalog = control['model']
+    model.sort_data(catalog)
     pass
 
 
@@ -66,6 +83,8 @@ def get_data(control, id):
     Retorna un dato por su ID.
     """
     #TODO: Llamar la función del modelo para obtener un dato
+    catalog = control['model']
+    return model.get_data(catalog, id)
     pass
 
 
