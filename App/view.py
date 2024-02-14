@@ -49,23 +49,36 @@ def new_controller():
 def print_menu():
     print("Bienvenido")
     print("1- Cargar información")
-    print("2- Ejecutar Requerimiento 1")
-    print("3- Ejecutar Requerimiento 2")
-    print("4- Ejecutar Requerimiento 3")
-    print("5- Ejecutar Requerimiento 4")
-    print("6- Ejecutar Requerimiento 5")
-    print("7- Ejecutar Requerimiento 6")
-    print("8- Ejecutar Requerimiento 7")
-    print("9- Ejecutar Requerimiento 8")
+    print("2- Listar las últimas N ofertas de trabajo según su país y nivel de experticia (G)")
+    print("3- Listar las últimas N ofertas de trabajo por empresa y ciudad (G)")
+    print("4- Consultar las ofertas que publicó una empresa durante un periodo especifico de tiempo (I)")
+    print("5- Consultar las ofertas que se publicaron en un país durante un periodo de tiempo(I)")
+    print("6- Consultar las ofertas que se publicaron en una ciudad durante un periodo de tiempo (I)")
+    print("7- Clasificar las N ciudades con mayor número de ofertas de trabajo por experticia entre un rango de fechas (G)")
+    print("8- Clasificar los N países con mayor número de ofertas de trabajo por divisa (G)")
+    print("9- Identificación de los países con mayor y menor ofertas de trabajo en un rango de fechas (B)")
     print("0- Salir")
 
 
-def load_data(control):
+def load_data(control, size)->tuple[int, int, int, int]:
+    JOBS_FILE= "-jobs.csv"
+    SKILLS_FILE= "-skills.csv"
+    EMPLOYMENT_TYPES_FILE= "-employments_types.csv"
+    MULTILOCATION_FILE="-multilocations.csv"
     """
     Carga los datos
     """
     #TODO: Realizar la carga de datos
-    pass
+    jobs_size, skills_size, employment_types_size, multilocation_size=(
+        controller.load_data(
+            control,
+            jobs_path=size + JOBS_FILE ,
+            skills_path=size + SKILLS_FILE ,
+            employment_types_path=size + EMPLOYMENT_TYPES_FILE ,
+            multilocation_path=size + MULTILOCATION_FILE ,
+        )    
+    )
+    return jobs_size, skills_size, employment_types_size, multilocation_size
 
 
 def print_data(control, id):
