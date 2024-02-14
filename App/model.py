@@ -49,18 +49,29 @@ def new_data_structs():
     Inicializa las estructuras de datos del modelo. Las crea de
     manera vacía para posteriormente almacenar la información.
     """
-    #TODO: Inicializar las estructuras de datos
-    pass
+    data_structs = {'jobs': None,
+               'multilocations': None,
+               'skills': None,
+               'employments_types': None}
+
+    data_structs['jobs'] = lt.newList('SINGLE_LINKED')
+    data_structs['multilocations'] = lt.newList('SINGLE_LINKED')
+    data_structs['skills'] = lt.newList('SINGLE_LINKED')
+    data_structs['employments_type'] = lt.newList('SINGLE_LINKED')
+               
+    return data_structs
 
 
 # Funciones para agregar informacion al modelo
 
-def add_data(data_structs, data):
+def add_data(data_structs, data, file):
     """
     Función para agregar nuevos elementos a la lista
     """
-    #TODO: Crear la función para agregar elementos a una lista
-    pass
+    lt.addLast(data_structs[file], data)
+
+    
+    return data_structs
 
 
 # Funciones para creacion de datos
@@ -69,8 +80,11 @@ def new_data(id, info):
     """
     Crea una nueva estructura para modelar los datos
     """
-    #TODO: Crear la función para estructurar los datos
-    pass
+    data_n = {'id': None, 'info': None}
+    data_n['id'] = id
+    data_n['info'] = info
+    
+    return data_n
 
 
 # Funciones de consulta
@@ -79,16 +93,20 @@ def get_data(data_structs, id):
     """
     Retorna un dato a partir de su ID
     """
-    #TODO: Crear la función para obtener un dato de una lista
-    pass
+    pos = lt.isPresent(data_structs['id'], id)
+    if pos > 0:
+        data = lt.getElement(data_structs['id'], pos)
+        return data
+    return None
 
 
-def data_size(data_structs):
+
+def data_size(data_structs, data):
     """
     Retorna el tamaño de la lista de datos
     """
-    #TODO: Crear la función para obtener el tamaño de una lista
-    pass
+    return lt.size(data_structs[data])
+    
 
 
 def req_1(data_structs):
