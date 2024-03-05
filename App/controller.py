@@ -111,7 +111,7 @@ def req_3(control):
     pass
 
 
-def req_4(control):
+def req_4(codigo:str, f_inicial: str, fecha_f: str):
     """
     Retorna el resultado del requerimiento 4
     """

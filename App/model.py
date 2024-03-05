@@ -76,13 +76,13 @@ def add_data(data_structs, data):
 
 # Funciones para creacion de datos
 
-def new_data(data_structs, data):
+def new_data(id, info, data_structs, data):
     """
     Crea una nueva estructura para modelar los datos
     """
     data_n = {'id': None, 'info': None}
     data_n['id'] = id
-    data_n['info'] = 
+    data_n['info'] = info
     
     return data_n
 
@@ -133,11 +133,12 @@ def req_3(data_structs):
     pass
 
 
-def req_4(data_structs):
+def req_4(data_structs, data):
     """
     Función que soluciona el requerimiento 4
     """
     # TODO: Realizar el requerimiento 4
+    #ofertas= data_structs[""]==
     pass
 
 

@@ -70,13 +70,13 @@ def load_data(control, size)->tuple[int, int, int, int]:
     Carga los datos
     """
     #TODO: Realizar la carga de datos
-    jobs_size, skills_size, employment_types_size, multilocation_size=(
-        controller.load_data(
+    jobs_size, skills_size, employment_types_size, multilocation_size=(controller.load_data
+        (
             control,
-            jobs_path=size + JOBS_FILE ,
-            skills_path=size + SKILLS_FILE ,
-            employment_types_path=size + EMPLOYMENT_TYPES_FILE ,
-            multilocation_path=size + MULTILOCATION_FILE ,
+            jobs_path= size + JOBS_FILE ,
+            skills_path= size + SKILLS_FILE ,
+            employment_types_path= size + EMPLOYMENT_TYPES_FILE ,
+            multilocation_path= size + MULTILOCATION_FILE ,
         )    
     )
     
@@ -159,7 +159,7 @@ def print_req_8(control):
 
 
 # Se crea el controlador asociado a la vista
-control = new_controller()
+control = None
 
 # main del reto
 if __name__ == "__main__":
