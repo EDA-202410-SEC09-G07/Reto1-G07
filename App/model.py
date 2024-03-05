@@ -44,7 +44,7 @@ dos listas, una para los videos, otra para las categorias de los mismos.
 # Construccion de modelos
 
 
-def new_data_structs():
+def new_data_structs(ARRAY_LIST):
     """
     Inicializa las estructuras de datos del modelo. Las crea de
     manera vacía para posteriormente almacenar la información.
@@ -54,21 +54,21 @@ def new_data_structs():
                'skills': None,
                'employments_types': None}
 
-    data_structs['jobs'] = lt.newList('SINGLE_LINKED')
-    data_structs['multilocations'] = lt.newList('SINGLE_LINKED')
-    data_structs['skills'] = lt.newList('SINGLE_LINKED')
-    data_structs['employments_type'] = lt.newList('SINGLE_LINKED')
+    data_structs['jobs'] = lt.newList('ARRAY_LIST')
+    data_structs['multilocations'] = lt.newList('ARRAY_LIST')
+    data_structs['skills'] = lt.newList('ARRAY_LIST')
+    data_structs['employments_type'] = lt.newList('ARRAY_LIST')
                
     return data_structs
 
 
 # Funciones para agregar informacion al modelo
 
-def add_data(data_structs, data, file):
+def add_data(data_structs, data):
     """
     Función para agregar nuevos elementos a la lista
     """
-    lt.addLast(data_structs[file], data)
+    lt.addLast(data_structs, data)
 
     
     return data_structs
@@ -76,13 +76,13 @@ def add_data(data_structs, data, file):
 
 # Funciones para creacion de datos
 
-def new_data(id, info):
+def new_data(data_structs, data):
     """
     Crea una nueva estructura para modelar los datos
     """
     data_n = {'id': None, 'info': None}
     data_n['id'] = id
-    data_n['info'] = info
+    data_n['info'] = 
     
     return data_n
 

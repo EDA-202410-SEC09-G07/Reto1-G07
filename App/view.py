@@ -27,7 +27,7 @@ from DISClib.ADT import list as lt
 from DISClib.ADT import stack as st
 from DISClib.ADT import queue as qu
 assert cf
-from tabulate import tabulate
+#from tabulate import tabulate
 import traceback
 
 """
@@ -43,7 +43,7 @@ def new_controller():
         Se crea una instancia del controlador
     """
     #TODO: Llamar la función del controlador donde se crean las estructuras de datos
-    control = controller.newController()
+    control = controller.new_controller()
     return control
 
 
