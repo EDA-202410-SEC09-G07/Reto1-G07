@@ -92,13 +92,19 @@ def print_req_1(control):
     # TODO: Imprimir el resultado del requerimiento 1
     pass
 
-
-def print_req_2(control):
-    """
-        Función que imprime la solución del Requerimiento 2 en consola
-    """
-    # TODO: Imprimir el resultado del requerimiento 2
-    pass
+def print_req_2(self, ofertas):
+        total_ofertas = size(ofertas)
+        print(f"Total de ofertas ofrecidas por la empresa en la ciudad: {total_ofertas}")
+        for oferta in ofertas:
+            print(f"Fecha de publicación: {oferta.fecha}")
+            print(f"País de la oferta: {oferta.pais}")
+            print(f"Ciudad de la oferta: {oferta.ciudad}")
+            print(f"Nombre de la empresa de la oferta: {oferta.nombre_emp}")
+            print(f"Título de la oferta: {oferta.titulo}")
+            print(f"Nivel de experticia de la oferta: {oferta.expertise}")
+            print(f"Formato de aplicación de la oferta: {oferta.formato_aplicacion}")
+            print(f"Tipo de trabajo, si es remoto o no: {oferta.trabajo_remoto}")
+            print("-" * 50)
 
 
 def print_req_3(control):

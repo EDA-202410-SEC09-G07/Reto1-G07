@@ -172,13 +172,23 @@ def req_1(data_structs):
     # TODO: Realizar el requerimiento 1
     pass
 
+def req_2_1(x, fecha, pais, ciudad, nombre_emp, titulo, expertise, formato_aplicacion, trabajo_remoto):
+        x.fecha = fecha
+        x.pais = pais
+        x.ciudad = ciudad
+        x.nombre_empresa = nombre_emp
+        x.titulo = titulo
+        x.expertise = expertise
+        x.formato_aplicacion = formato_aplicacion
+        x.trabajo_remoto = trabajo_remoto
 
-def req_2(data_structs):
-    """
-    Función que soluciona el requerimiento 2
-    """
-    # TODO: Realizar el requerimiento 2
-    pass
+def req_2_2(x, estructuras_de_datos):
+    x.estructuras_de_datos = estructuras_de_datos
+    
+def req_2(x, n, nombre_emp, ciudad):
+    ofertas_filtradas = [oferta for oferta in x.estructuras_de_datos if oferta.nombre_empresa == nombre_emp and oferta.ciudad == ciudad]
+    ofertas_ordenadas = quk(ofertas_filtradas, key=lambda x: x.fecha, reverse=True)[:n]
+    return ofertas_ordenadas
 
 
 def req_3(data_structs):

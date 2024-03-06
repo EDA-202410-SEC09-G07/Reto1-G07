@@ -150,13 +150,11 @@ def req_1(control):
     # TODO: Modificar el requerimiento 1
     pass
 
-
-def req_2(control):
-    """
-    Retorna el resultado del requerimiento 2
-    """
-    # TODO: Modificar el requerimiento 2
-    pass
+def req_2_1(x, repositorio):
+        x.repositorio = repositorio
+    
+def req_2(x, n, nombre_empresa, ciudad):
+        return x.repositorio.req_2_1(n, nombre_empresa, ciudad)
 
 
 def req_3(control):
