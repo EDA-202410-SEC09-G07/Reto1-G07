@@ -27,7 +27,7 @@ from DISClib.ADT import list as lt
 from DISClib.ADT import stack as st
 from DISClib.ADT import queue as qu
 assert cf
-from tabulate import tabulate
+#from tabulate import tabulate
 import traceback
 
 """
@@ -43,7 +43,7 @@ def new_controller():
         Se crea una instancia del controlador
     """
     #TODO: Llamar la función del controlador donde se crean las estructuras de datos
-    control = controller.newController()
+    control = controller.new_controller()
     return control
 
 
@@ -61,23 +61,14 @@ def print_menu():
     print("0- Salir")
 
 
-def load_data(control, size)->tuple[int, int, int, int]:
-    JOBS_FILE= "-jobs.csv"
-    SKILLS_FILE= "-skills.csv"
-    EMPLOYMENT_TYPES_FILE= "-employments_types.csv"
-    MULTILOCATION_FILE="-multilocations.csv"
+def load_data(control, size):
+    
     """
     Carga los datos
     """
     #TODO: Realizar la carga de datos
     jobs_size, skills_size, employment_types_size, multilocation_size=(
-        controller.load_data(
-            control,
-            jobs_path=size + JOBS_FILE ,
-            skills_path=size + SKILLS_FILE ,
-            employment_types_path=size + EMPLOYMENT_TYPES_FILE ,
-            multilocation_path=size + MULTILOCATION_FILE ,
-        )    
+        controller.load_data(control, size)    
     )
     
     return jobs_size, skills_size, employment_types_size, multilocation_size
@@ -173,7 +164,15 @@ if __name__ == "__main__":
         inputs = input('Seleccione una opción para continuar\n')
         if int(inputs) == 1:
             print("Cargando información de los archivos ....\n")
-            data = load_data(control)
+            print("Tamaño de los archivos")
+            print(" 1. small\n 2. 5 pct\n 3. 10 pct\n 4. 20 pct\n 5. 30 pct\n 6. 50 pct\n 7. 80 pct\n 8. large")
+            size = input("Seleccionar el tamaño de el archivo")
+            jobs, skills, employment_types, multilocation = load_data(control, size)
+            print("jobs:"+ str(jobs))
+            print("skills:"+ str(skills))
+            print("emplyment_types:"+ str(employment_types))
+            print("multilocation:"+ str(multilocation))
+            
         elif int(inputs) == 2:
             print_req_1(control)
 

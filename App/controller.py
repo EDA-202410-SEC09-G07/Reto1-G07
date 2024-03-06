@@ -41,28 +41,85 @@ def new_controller():
     }
     control['model'] = model.new_data_structs()
     return control
-    pass
+    
 
 # Funciones para la carga de datos
 
-def load_data(control, filename):
+def load_data(control, siz):
     """
     Carga los datos del reto
     """
+    
     # TODO: Realizar la carga de datos
+    size = tamaño_archivo(siz)
+    control['model'] = model.new_data_structs()
     catalog = control['model']
     
-    jobs = load_jobs(jobs_filename, 'jobs')
-    skills = load_skills(skills_filename, 'skills')
-    employment_types = load_employment_types(employment_types_filename, 'employments_type')
-    multilocation = load_multilocation(multilocation_filename, 'multilocations')
-    
-    model.add_data(catalog, jobs, 'jobs')
-    model.add_data(catalog, skills, 'skills')
-    model.add_data(catalog, employment_types, 'employments_type')
-    model.add_data(catalog, multilocation, 'multilocations')
-    pass
+    jobs = load_jobs(catalog, size)
+    skills = load_skills(catalog, size)
+    employment_types = load_employment_types(catalog, size)
+    multilocation = load_multilocation(catalog, size)
 
+    return jobs, skills, employment_types, multilocation
+
+#funciones axuliares de carga 
+def tamaño_archivo (size):
+    tamaño = int(size)
+    size1 = 'small'
+    if tamaño == 2:
+        size1 = "10-por"
+    if tamaño == 3:
+        size1 = "20-por"
+    if tamaño == 4:
+        size1 = "30-por"
+    if tamaño == 5:
+        size1 = "40-por"
+    if tamaño == 6:
+        size1 = "50-por"
+    if tamaño == 7:
+        size1 = "60-por"
+    if tamaño == 8:
+        size1 = "70-por"
+    if tamaño == 9:
+        size1 = "80-por"
+    if tamaño == 10:
+        size1 = "90-por"
+    if tamaño == 11:
+        size1 = "small"
+    if tamaño == 12:
+        size1 = "medium"
+    if tamaño == 13:
+        size1 = "large"
+    return size1
+        
+    
+def load_jobs(catalog, size):
+    jobs = cf.data_dir + "archivos/data/"+ str(size) + "-jobs.csv"
+    input_file = csv.DictReader(open(jobs, encoding="utf-8"), delimiter=";")
+    for job in input_file:
+        model.add_jobs(catalog, job)
+    return model.jobs_size(catalog)
+
+def load_skills(catalog, size):
+    skills = cf.data_dir + "archivos/data/"+ size + "-skills.csv"
+    input_file = csv.DictReader(open(skills, encoding="utf-8"),  delimiter=";")
+    for skill in input_file:
+        model.add_skills(catalog, skill)
+    return model.skills_size(catalog)
+
+def load_employment_types(catalog, size):
+    employment_types = cf.data_dir + "archivos/data/"+ size + "-employments_types.csv"
+    input_file = csv.DictReader(open(employment_types, encoding="utf-8"),  delimiter=";")
+    for employment_type in input_file:
+        model.add_employments_type(catalog, employment_type)
+    return model.employments_type_size(catalog)
+
+def load_multilocation(catalog, size):
+    multilocations = cf.data_dir + "archivos/data/"+ size + "-multilocations.csv"
+    input_file = csv.DictReader(open(multilocations, encoding="utf-8"),  delimiter=";")
+    for multilocation in input_file:
+        model.add_multilocations(catalog, multilocation)
+    return model.multilocations_size(catalog)
 
 # Funciones de ordenamiento
 

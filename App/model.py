@@ -64,14 +64,54 @@ def new_data_structs():
 
 # Funciones para agregar informacion al modelo
 
-def add_data(data_structs, data, file):
+def add_employments_type(data_structs, data):
     """
     Función para agregar nuevos elementos a la lista
     """
-    lt.addLast(data_structs[file], data)
+    lt.addLast(data_structs['employments_type'], data)
 
     
     return data_structs
+
+def add_jobs(data_structs, data):
+    """
+    Función para agregar nuevos elementos a la lista
+    """
+    lt.addLast(data_structs['jobs'], data)
+
+    
+    return data_structs
+
+def add_multilocations(data_structs, data):
+    """
+    Función para agregar nuevos elementos a la lista
+    """
+    lt.addLast(data_structs['multilocations'], data)
+
+    
+    return data_structs
+
+def add_skills(data_structs, data):
+    """
+    Función para agregar nuevos elementos a la lista
+    """
+    lt.addLast(data_structs['skills'], data)
+
+    
+    return data_structs
+
+def jobs_size(data_structs):
+    return lt.size(data_structs['jobs'])
+
+def multilocations_size(data_structs):
+    return lt.size(data_structs['multilocations'])
+
+def skills_size(data_structs):
+    return lt.size(data_structs['skills'])
+
+def employments_type_size(data_structs):
+    return lt.size(data_structs['employments_type'])
+
 
 
 # Funciones para creacion de datos
@@ -87,6 +127,22 @@ def new_data(id, info):
     return data_n
 
 
+def newjobs(name,id ):
+    job = {"name": "", "books": None }
+    job["name"] = name
+    job["jobs"] = lt.newList("ARRAY_LIST")
+    return job
+
+def newemployment(name,id ):
+    job = {"name": "", "books": None }
+    job["name"] = name
+    job["jobs"] = lt.newList("ARRAY_LIST")
+    return job
+def newmultilocations(name,id ):
+    job = {"name": "", "books": None }
+    job["name"] = name
+    job["jobs"] = lt.newList("ARRAY_LIST")
+    return job
 # Funciones de consulta
 
 def get_data(data_structs, id):
