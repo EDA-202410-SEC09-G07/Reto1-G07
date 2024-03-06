@@ -36,9 +36,7 @@ def new_controller():
     Crea una instancia del modelo
     """
     #TODO: Llamar la función del modelo que crea las estructuras de datos
-    control = {
-        'model': None
-    }
+    control = {'model': None}
     control['model'] = model.new_data_structs()
     return control
     
@@ -169,7 +167,7 @@ def req_3(control):
     pass
 
 
-def req_4(control):
+def req_4(codigo:str, f_inicial: str, fecha_f: str):
     """
     Retorna el resultado del requerimiento 4
     """

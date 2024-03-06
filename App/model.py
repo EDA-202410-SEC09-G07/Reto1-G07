@@ -44,7 +44,7 @@ dos listas, una para los videos, otra para las categorias de los mismos.
 # Construccion de modelos
 
 
-def new_data_structs():
+def new_data_structs(ARRAY_LIST):
     """
     Inicializa las estructuras de datos del modelo. Las crea de
     manera vacía para posteriormente almacenar la información.
@@ -54,10 +54,10 @@ def new_data_structs():
                'skills': None,
                'employments_types': None}
 
-    data_structs['jobs'] = lt.newList('SINGLE_LINKED')
-    data_structs['multilocations'] = lt.newList('SINGLE_LINKED')
-    data_structs['skills'] = lt.newList('SINGLE_LINKED')
-    data_structs['employments_type'] = lt.newList('SINGLE_LINKED')
+    data_structs['jobs'] = lt.newList('ARRAY_LIST')
+    data_structs['multilocations'] = lt.newList('ARRAY_LIST')
+    data_structs['skills'] = lt.newList('ARRAY_LIST')
+    data_structs['employments_type'] = lt.newList('ARRAY_LIST')
                
     return data_structs
 
@@ -116,7 +116,7 @@ def employments_type_size(data_structs):
 
 # Funciones para creacion de datos
 
-def new_data(id, info):
+def new_data(id, info, data_structs, data):
     """
     Crea una nueva estructura para modelar los datos
     """
@@ -189,11 +189,12 @@ def req_3(data_structs):
     pass
 
 
-def req_4(data_structs):
+def req_4(data_structs, data):
     """
     Función que soluciona el requerimiento 4
     """
     # TODO: Realizar el requerimiento 4
+    #ofertas= data_structs[""]==
     pass
 
 
