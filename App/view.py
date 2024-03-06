@@ -129,8 +129,6 @@ def print_req_4(x, ofertas):
 """
         Función que imprime la solución del Requerimiento 4 en consola
     """
-    
-    # TODO: Imprimir el resultado del requerimiento 4
 
 
 def print_req_5(control):
