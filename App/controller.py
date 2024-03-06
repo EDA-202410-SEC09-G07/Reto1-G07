@@ -20,10 +20,12 @@
  * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
  """
 
+import re
 import config as cf
 import model
 import time
 import csv
+from datetime import datetime
 
 
 """
@@ -36,7 +38,9 @@ def new_controller():
     Crea una instancia del modelo
     """
     #TODO: Llamar la función del modelo que crea las estructuras de datos
-    control = {'model': None}
+    control = {
+        'model': None
+    }
     control['model'] = model.new_data_structs()
     return control
     
@@ -95,6 +99,8 @@ def load_jobs(catalog, size):
     jobs = cf.data_dir + "archivos/data/"+ str(size) + "-jobs.csv"
     input_file = csv.DictReader(open(jobs, encoding="utf-8"), delimiter=";")
     for job in input_file:
+        # 2022-04-14T17:24:00.000Z
+        job['published_at'] = datetime.strptime(job['published_at'], '%Y-%m-%dT%H:%M:%S.%fZ')
         model.add_jobs(catalog, job)
     return model.jobs_size(catalog)
 
@@ -143,12 +149,15 @@ def get_data(control, id):
     pass
 
 
-def req_1(control):
+def req_1(control, N, code_country, level):
     """
     Retorna el resultado del requerimiento 1
     """
     # TODO: Modificar el requerimiento 1
-    pass
+    
+    catalog = control['model']
+    
+    return model.req_1(catalog, N, code_country, level)
 
 
 def req_2(control):
@@ -159,15 +168,18 @@ def req_2(control):
     pass
 
 
-def req_3(control):
+def req_3(control, company_name, initial_date, final_date):
     """
     Retorna el resultado del requerimiento 3
     """
     # TODO: Modificar el requerimiento 3
-    pass
+    
+    catalog = control['model']
+    
+    return model.req_3(catalog, company_name, initial_date, final_date)
 
 
-def req_4(codigo:str, f_inicial: str, fecha_f: str):
+def req_4(control):
     """
     Retorna el resultado del requerimiento 4
     """
@@ -221,3 +233,4 @@ def delta_time(start, end):
     """
     elapsed = float(end - start)
     return elapsed
+

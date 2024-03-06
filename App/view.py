@@ -20,6 +20,7 @@
  * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
  """
 
+from re import sub
 import config as cf
 import sys
 import controller
@@ -85,12 +86,26 @@ def print_data(control, id):
     else:
         print("No se encontró ningún dato con el ID proporcionado.")
 
-def print_req_1(control):
+def print_req_1(control, N, code_country, level):
     """
         Función que imprime la solución del Requerimiento 1 en consola
     """
     # TODO: Imprimir el resultado del requerimiento 1
-    pass
+    
+    sublist = controller.req_1(control, N, code_country, level)
+    
+    for element in lt.iterator(sublist):
+        print(f"Fechas: {element['published_at']}")
+        print(f"Titulo Oferta: {element['title']}")
+        print(f"Empresa: {element['company_name']}")
+        print(f"Nivel de experiencia: {element['experience_level']}")
+        print(f"País: {element['country_code']}")
+        print(f"Ciudad de la oferta: {element['city']}")
+        print(f"Tamaño de la empresa: {element['company_size']}")
+        print(f"Tipo de empleo: {element['workplace_type']}")
+        print(f"Disponibilidad Ucranianos {element['open_to_hire_ukrainians']}\n\n")
+         
+    return sublist
 
 
 def print_req_2(control):
@@ -101,12 +116,37 @@ def print_req_2(control):
     pass
 
 
-def print_req_3(control):
+def print_req_3(control, company_name, initial_date, final_date):
     """
         Función que imprime la solución del Requerimiento 3 en consola
     """
     # TODO: Imprimir el resultado del requerimiento 3
-    pass
+    
+    sublist, juniors, mids, seniors  = controller.req_3(control, company_name, initial_date, final_date)
+
+    print("Ofertas de trabajo publicadas por la empresa: " + company_name)
+    print(lt.size(sublist))
+    print("Ofertas de trabajo publicadas por la empresa por nivel de experiencia")
+    print(f"Juniors: {juniors}" )
+    print(f"Mids: {mids}" )
+    print(f"Seniors: {seniors}" )
+        
+    counter = 0
+    for job in lt.iterator(sublist):
+        
+        if counter == 21:
+            break
+        print(f"Fechas: {job['published_at']}")
+        print(f"Titulo Oferta: {job['title']}")
+        print(f"Empresa: {job['company_name']}")
+        print(f"Nivel de experiencia: {job['experience_level']}")
+        print(f"País: {job['country_code']}")
+        print(f"Ciudad de la oferta: {job['city']}")
+        print(f"Tamaño de la empresa: {job['company_size']}")
+        print(f"Tipo de empleo: {job['workplace_type']}")
+        print(f"Disponibilidad Ucranianos {job['open_to_hire_ukrainians']}\n\n")
+        counter += 1
+
 
 
 def print_req_4(control):
@@ -150,7 +190,7 @@ def print_req_8(control):
 
 
 # Se crea el controlador asociado a la vista
-control = None
+control = new_controller()
 
 # main del reto
 if __name__ == "__main__":
@@ -168,19 +208,28 @@ if __name__ == "__main__":
             print(" 1. small\n 2. 5 pct\n 3. 10 pct\n 4. 20 pct\n 5. 30 pct\n 6. 50 pct\n 7. 80 pct\n 8. large")
             size = input("Seleccionar el tamaño de el archivo")
             jobs, skills, employment_types, multilocation = load_data(control, size)
+            
             print("jobs:"+ str(jobs))
             print("skills:"+ str(skills))
             print("emplyment_types:"+ str(employment_types))
             print("multilocation:"+ str(multilocation))
             
         elif int(inputs) == 2:
-            print_req_1(control)
+            N = int(input("Numero de ofertas a listar: "))
+            code_country = input("Código del país: ")
+            level = input("Nivel de experticia: ")
+            print_req_1(control, N, code_country, level)
 
         elif int(inputs) == 3:
             print_req_2(control)
 
         elif int(inputs) == 4:
-            print_req_3(control)
+            company_name = input("Nombre de la empresa: ")
+            initial_date = input("Fecha inicial (YYYY-MM-DD): ")
+            final_date = input("Fecha final (YYYY-MM-DD): ")
+            
+            
+            print_req_3(control, company_name, initial_date, final_date)
 
         elif int(inputs) == 5:
             print_req_4(control)
@@ -203,3 +252,4 @@ if __name__ == "__main__":
         else:
             print("Opción errónea, vuelva a elegir.\n")
     sys.exit(0)
+
