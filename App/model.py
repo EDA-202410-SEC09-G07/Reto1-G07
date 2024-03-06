@@ -189,13 +189,33 @@ def req_3(data_structs):
     pass
 
 
-def req_4(data_structs, data):
-    """
+def req4_1 (x, pais, fecha, titulo, habilidad, nombre_emp, ciudad, localizacion, trabajo_remoto, contratar_uk):
+        x.pais = pais
+        x.fecha = fecha
+        x.titulo = titulo
+        x.habilidad = habilidad
+        x.nombre_empresa = nombre_emp
+        x.ciudad_empresa = ciudad
+        x.ubicacion_trabajo = localizacion
+        x.trabajo_remoto = trabajo_remoto
+        x.contratar_ucranianos = contratar_uk
+        
+def req4_2(x, estructuras_de_datos):
+        x.estructuras_de_datos = estructuras_de_datos
+    
+def req4 (x, pais_cod, fecha_inicio, fecha_fin):
+        ofertas_filtradas = []
+        for oferta in x.estructuras_de_datos:
+            if (oferta.pais == pais_cod and 
+                fecha_inicio <= oferta.fecha <= fecha_fin):
+                ofertas_filtradas.append(oferta)
+        return ofertas_filtradas
+
+"""
     Función que soluciona el requerimiento 4
     """
     # TODO: Realizar el requerimiento 4
     #ofertas= data_structs[""]==
-    pass
 
 
 def req_5(data_structs):

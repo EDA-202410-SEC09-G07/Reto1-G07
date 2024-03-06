@@ -167,14 +167,14 @@ def req_3(control):
     pass
 
 
-def req_4(codigo:str, f_inicial: str, fecha_f: str):
-    """
-    Retorna el resultado del requerimiento 4
-    """
-    # TODO: Modificar el requerimiento 4
-    pass
+ 
+def req4_1(x, repositorio):
+        x.repositorio = repositorio
+    
+def req_4(x, codigo_pais, fecha_inicio, fecha_fin):
+        return x.repositorio.obtener_ofertas_en_periodo(codigo_pais, fecha_inicio, fecha_fin)
 
-
+   # TODO: Modificar el requerimiento 4
 def req_5(control):
     """
     Retorna el resultado del requerimiento 5

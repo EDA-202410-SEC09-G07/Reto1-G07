@@ -109,12 +109,22 @@ def print_req_3(control):
     pass
 
 
-def print_req_4(control):
-    """
+def print_req_4(x, ofertas):
+    for oferta in ofertas:
+        print(f"Fecha de publicación: {oferta.fecha}")
+        print(f"Título de la oferta: {oferta.titulo}")
+        print(f"Nivel de experticia requerido: {oferta.habilidad}")
+        print(f"Nombre de la empresa: {oferta.nombre_emp}")
+        print(f"Ciudad de la empresa: {oferta.ciudad_emp}")
+        print(f"Ubicación del trabajo: {oferta.localizacion}")
+        print(f"Trabajo remoto: {oferta.trabajo_remoto}")
+        print(f"Contratar ucranianos: {oferta.contratar_uk}")
+        print("-" * 50)
+"""
         Función que imprime la solución del Requerimiento 4 en consola
     """
+    
     # TODO: Imprimir el resultado del requerimiento 4
-    pass
 
 
 def print_req_5(control):
